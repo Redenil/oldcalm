@@ -1,0 +1,22 @@
+﻿@model StayCalm.Models.Common.LanguageSelectorViewModel
+
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <img src="~/Content/Images/CountryFlags/@(Model.CurrentCultureName).png" alt="@Model.CurrentCultureName" />
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        @foreach (var item in Model.AvailableCultures)
+            {
+            <li>
+                <a href="@Url.Action("SetCulture", "Account", new { culture = item.Value })">
+                    <img src="~/Content/Images/CountryFlags/@(item.Value).png" alt="@item.Text" />
+                    <span>
+                        @item.Text
+                    </span>
+                </a>
+            </li>
+
+        }
+    </ul>
+</div>

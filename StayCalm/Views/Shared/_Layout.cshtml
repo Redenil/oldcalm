@@ -1,0 +1,72 @@
+﻿@using StayCalm.Helpers
+@using Resources
+<!DOCTYPE html>
+<html lang="@CultureHelper.GetCurrentNeutralCulture()" dir="@(CultureHelper.IsRighToLeft() ? "rtl" : "ltr")">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Stay Calm</title>
+    @Styles.Render("~/Content/css" + (CultureHelper.IsRighToLeft() ? "-rtl" : ""))
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <header>
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar">test</span>
+                        <span class="icon-bar">test 2</span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand scroll-top"
+                       href="@Url.Action("Index", "Home")">
+                        <img src="~/Content/Images/calm.jpeg" alt="Brand" />
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <div class="container">
+                        <div>
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink(Translate.Home_Menu, "Index", "Home")</li>
+                                <li>@Html.ActionLink(Translate.About_Menu, "About", "Home")</li>
+                                <li>@Html.ActionLink(Translate.Contactus_Menu, "Contact", "Home")</li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        @Translate.RightAdministration <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>@Html.ActionLink("Manage roles", "Index", "Roles")</li>
+                                        <li>@Html.ActionLink("Manage rights", "Index", "Account")</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Manage buddies</a></li>
+                                        <li><a href="#">Manage relationships</a></li>
+                                        <li><a href="#">Manage Refugees</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="nav navbar-nav navbar-right">
+                                @Html.Action("LanguageSelector", "Account")
+                            </div>
+                            @Html.Partial("_LoginPartial")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap" + (CultureHelper.IsRighToLeft() ? "-rtl" : ""))
+    @Scripts.Render("~/bundles/staycalm")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
