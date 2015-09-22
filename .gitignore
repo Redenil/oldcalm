@@ -1,7 +1,5 @@
 *.dll
 *.pdb
 *.nupkg
-*.suo
-/packages/*
 *obj*/
 *bin*/
